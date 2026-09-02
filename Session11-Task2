@@ -1,0 +1,66 @@
+Write a program to count the number of days between two dates.
+
+The two dates are given as strings, their format is YYYY-MM-DD as shown in the examples.
+
+ 
+
+Example 1:
+
+Input: date1 = "2019-06-29", date2 = "2019-06-30"
+Output: 1
+Example 2:
+
+Input: date1 = "2020-01-15", date2 = "2019-12-31"
+Output: 15
+ 
+
+Constraints:
+
+The given dates are valid dates between the years 1971 and 2100.
+
+program:
+
+class Solution {
+    public boolean isLeap(int year) {
+        return year % 400 == 0 ||
+               (year % 4 == 0 && year % 100 != 0);
+    }
+
+    public int daysFrom1971(String date) {
+        int year = Integer.parseInt(date.substring(0, 4));
+        int month = Integer.parseInt(date.substring(5, 7));
+        int day = Integer.parseInt(date.substring(8, 10));
+
+        int days = 0;
+
+        // Previous years
+        for (int y = 1971; y < year; y++) {
+            days += isLeap(y) ? 366 : 365;
+        }
+
+        int[] monthDays = {
+            31, 28, 31, 30, 31, 30,
+            31, 31, 30, 31, 30, 31
+        };
+
+        if (isLeap(year)) {
+            monthDays[1] = 29;
+        }
+
+        // Previous months
+        for (int m = 1; m < month; m++) {
+            days += monthDays[m - 1];
+        }
+
+        // Current month
+        days += day;
+
+        return days;
+    }
+
+    public int daysBetweenDates(String date1, String date2) {
+        return Math.abs(
+            daysFrom1971(date1) - daysFrom1971(date2)
+        );
+    }
+}
