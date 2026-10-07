@@ -1,80 +1,77 @@
-You are given a string containing characters  and  only. Your task is to change it into a string such that there are no matching adjacent characters. To do this, you are allowed to delete zero or more characters in the string.
+Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
 
-Your task is to find the minimum number of required deletions.
+ 
 
-Example
+Example 1:
 
-Remove an  at positions  and  to make  in  deletions.
+Input: s = "cbaebabacd", p = "abc"
+Output: [0,6]
+Explanation:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+Example 2:
 
-Function Description
+Input: s = "abab", p = "ab"
+Output: [0,1,2]
+Explanation:
+The substring with start index = 0 is "ab", which is an anagram of "ab".
+The substring with start index = 1 is "ba", which is an anagram of "ab".
+The substring with start index = 2 is "ab", which is an anagram of "ab".
+ 
 
-Complete the alternatingCharacters function in the editor below.
+Constraints:
 
-alternatingCharacters has the following parameter(s):
-
-string s: a string
-Returns
-
-int: the minimum number of deletions required
-Input Format
-
-The first line contains an integer , the number of queries.
-The next  lines each contain a string  to analyze.
-
-Constraints
-
-Each string  will consist only of characters  and .
-Sample Input
-
-5
-AAAA
-BBBBB
-ABABABAB
-BABABA
-AAABBB
-Sample Output
-
-3
-4
-0
-0
-4
-Explanation
-
-The characters marked red are the ones that can be deleted so that the string does not have matching adjacent characters.
+1 <= s.length, p.length <= 3 * 104
+s and p consist of lowercase English letters.
 
 program:
 
-import java.io.*;
 import java.util.*;
 
-class Result {
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> result = new ArrayList<>();
 
-    public static int alternatingCharacters(String s) {
-        int deletions = 0;
+        if (s.length() < p.length()) {
+            return result;
+        }
 
-        for (int i = 1; i < s.length(); i++) {
-            if (s.charAt(i) == s.charAt(i - 1)) {
-                deletions++;
+        int[] pCount = new int[26];
+        int[] window = new int[26];
+
+        // Count characters in p
+        for (char c : p.toCharArray()) {
+            pCount[c - 'a']++;
+        }
+
+        int k = p.length();
+
+        // First window
+        for (int i = 0; i < k; i++) {
+            window[s.charAt(i) - 'a']++;
+        }
+
+        // Check first window
+        if (Arrays.equals(pCount, window)) {
+            result.add(0);
+        }
+
+        // Slide window
+        for (int right = k; right < s.length(); right++) {
+
+            // Add new character
+            window[s.charAt(right) - 'a']++;
+
+            // Remove old character
+            int left = right - k;
+            window[s.charAt(left) - 'a']--;
+
+            // Check anagram
+            if (Arrays.equals(pCount, window)) {
+                result.add(left + 1);
             }
         }
 
-        return deletions;
-    }
-}
-
-public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader =
-            new BufferedReader(new InputStreamReader(System.in));
-
-        int q = Integer.parseInt(bufferedReader.readLine());
-
-        for (int i = 0; i < q; i++) {
-            String s = bufferedReader.readLine();
-            System.out.println(Result.alternatingCharacters(s));
-        }
-
-        bufferedReader.close();
+        return result;
     }
 }
