@@ -1,3 +1,26 @@
+Task 6 (Difficult): Ride Sharing Platform Simulator
+Problem Description
+Design an object-oriented ride sharing system with reusable classes for Driver, Rider, Vehicle, and Trip. Support polymorphic fare calculation for Bike, Auto, and Cab rides. Include exception handling for invalid bookings.
+Input Format
+First line contains integer N.
+Next N lines contain ride type and distance.
+Output Format
+Display fare for each trip.
+Constraints
+1 ≤ N ≤ 10^5
+Sample Input
+3
+Bike 10
+Cab 15
+Auto 8
+Sample Output
+50
+180
+96
+
+    program:
+
+
 import java.util.Scanner;
 
 public class Ride {
