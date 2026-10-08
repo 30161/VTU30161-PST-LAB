@@ -1,3 +1,22 @@
+Task 3 (Easy): Maximum Profit Analyzer
+Problem Description
+Given daily profit/loss values, find the maximum possible profit obtainable from a contiguous sequence of days using Kadane’s Algorithm.
+Input Format
+First line contains integer N.
+Second line contains N integers.
+Output Format
+Print maximum subarray sum.
+Constraints
+1 ≤ N ≤ 10^5
+Sample Input
+8
+-2 -3 4 -1 -2 1 5 -3
+Sample Output
+7
+
+    program:
+
+
 import java.util.Scanner;
 
 public class Max {
