@@ -1,3 +1,23 @@
+Task 4 (Difficult): Intelligent DNA Pattern Search
+Problem Description
+A bioinformatics company needs to identify occurrences of dangerous DNA patterns inside a massive DNA sequence. Implement efficient pattern matching using KMP or Boyer-Moore algorithm.
+Input Format
+First line contains DNA string T.
+Second line contains pattern string P.
+Output Format
+Print all starting indices where pattern occurs.
+Constraints
+1 ≤ |T| ≤ 10^6
+1 ≤ |P| ≤ 10^5
+Sample Input
+AABAACAADAABAABA
+AABA
+Sample Output
+0 9 12
+
+
+Program:
+
 import java.util.Scanner;
 
 public class DNA {
