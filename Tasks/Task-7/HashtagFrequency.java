@@ -1,3 +1,26 @@
+Task 7 (Easy): Hashtag Frequency Counter
+Problem Description
+Count frequency of hashtags appearing in social media posts using maps/dictionaries.
+Input Format
+First line contains integer N.
+Next N lines contain hashtags.
+Output Format
+Display hashtag frequencies.
+Sample Input
+5
+java
+python
+java
+ai
+python
+Sample Output
+java 2
+python 2
+ai 1
+
+    
+Program:
+
 import java.util.*;
 
 public class HashtagFrequency {
