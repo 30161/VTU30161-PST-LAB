@@ -1,3 +1,29 @@
+Task 8 (Difficult): Smart Traffic Navigation System
+Problem Description
+A smart city application stores road connectivity information using nested collections. Given city junctions and roads, determine whether a route exists between two junctions using graph representation with collections.
+Input Format
+First line contains integers N and M.
+Next M lines contain connected junction pairs.
+Last line contains source and destination.
+Output Format
+Print YES if route exists, otherwise NO.
+Constraints
+1 ≤ N ≤ 10^5
+1 ≤ M ≤ 2×10^5
+Sample Input
+5 4
+1 2
+2 3
+3 4
+4 5
+1 5
+Sample Output
+YES
+
+
+
+Program:
+
 import java.util.*;
 
 public class traffic {
